@@ -73,15 +73,17 @@ def process_image(image):
             gray_face = np.expand_dims(gray_face, -1)
             emotion_label_arg = np.argmax(emotion_classifier.predict(gray_face))
             emotion_text = emotion_labels[emotion_label_arg]
+            
+            return emotion_text
 
-            if gender_text == gender_labels[0]:
-                color = (0, 0, 255)
-            else:
-                color = (255, 0, 0)
+#             if gender_text == gender_labels[0]:
+#                 color = (0, 0, 255)
+#             else:
+#                 color = (255, 0, 0)
 
-            draw_bounding_box(face_coordinates, rgb_image, color)
-            draw_text(face_coordinates, rgb_image, gender_text, color, 0, -20, 1, 2)
-            draw_text(face_coordinates, rgb_image, emotion_text, color, 0, -50, 1, 2)
+#             draw_bounding_box(face_coordinates, rgb_image, color)
+#             draw_text(face_coordinates, rgb_image, gender_text, color, 0, -20, 1, 2)
+#             draw_text(face_coordinates, rgb_image, emotion_text, color, 0, -50, 1, 2)
     except Exception as err:
         logging.error('Error in emotion gender processor: "{0}"'.format(err))
 
