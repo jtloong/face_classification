@@ -14,7 +14,7 @@ def upload():
     try:
         image = request.files['image'].read()
         emotion = eg_processor.process_image(image)
-        return emotion
+        return jsonify(emotion)
     except Exception as err:
         logging.error('An error has occurred whilst processing the file: "{0}"'.format(err))
         abort(400)

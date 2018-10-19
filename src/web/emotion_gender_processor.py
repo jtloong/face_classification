@@ -73,7 +73,7 @@ def process_image(image):
             gray_face = np.expand_dims(gray_face, -1)
             emotion_label_arg = np.argmax(emotion_classifier.predict(gray_face))
             emotion_text = emotion_labels[emotion_label_arg]
-            
+
             return emotion_text
 
 #             if gender_text == gender_labels[0]:
@@ -87,10 +87,10 @@ def process_image(image):
     except Exception as err:
         logging.error('Error in emotion gender processor: "{0}"'.format(err))
 
-    bgr_image = cv2.cvtColor(rgb_image, cv2.COLOR_RGB2BGR)
-
-    dirname = 'result'
-    if not os.path.exists(dirname):
-        os.mkdir(dirname)
-
-    cv2.imwrite(os.path.join(dirname, 'predicted_image.png'), bgr_image)
+    # bgr_image = cv2.cvtColor(rgb_image, cv2.COLOR_RGB2BGR)
+    #
+    # dirname = 'result'
+    # if not os.path.exists(dirname):
+    #     os.mkdir(dirname)
+    #
+    # cv2.imwrite(os.path.join(dirname, 'predicted_image.png'), bgr_image)
